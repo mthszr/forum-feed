@@ -1,11 +1,11 @@
 import { Header } from './components/Header'
-import { Post } from './components/Post'
+import { Post, type PostType } from './components/Post'
 import { Sidebar } from './components/Sidebar'
 
 import styles from './App.module.css'
 import './global.css'
 
-const posts = [
+const posts: PostType[] = [
   {
     id: 1,
     author: {
@@ -33,7 +33,7 @@ const posts = [
       role: 'Web Developer',
     },
     content: [
-      { type: 'paaragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
       {
         type: 'paragraph',
         content: 'Acabei de subir mais um projeto no meu portifólio! 🚀',
@@ -56,9 +56,7 @@ export function App() {
             return (
               <Post
                 key={post.id}
-                author={post.author}
-                content={post.content}
-                publishedAt={post.publishedAt}
+                post={post}
               />
             )
           })}

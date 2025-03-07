@@ -5,7 +5,12 @@ import styles from './Comment.module.css'
 
 import { ThumbsUp, Trash } from 'phosphor-react'
 
-export function Comment({ content, onDeleteComment }) {
+interface CommentProps {
+  content: string
+  onDeleteComment: (comment: string) => void
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
   const [likeCount, setLikeCount] = useState(0)
 
   function handleDeleteComment() {
@@ -13,12 +18,12 @@ export function Comment({ content, onDeleteComment }) {
   }
 
   function handleLikeComment() {
-    setLikeCount((state) => {
-      return likeCount + 1
+    setLikeCount(state => {
+      return state + 1
     })
 
-    setLikeCount((state) => {
-      return likeCount + 1
+    setLikeCount(state => {
+      return state + 1
     })
   }
 
@@ -27,6 +32,7 @@ export function Comment({ content, onDeleteComment }) {
       <Avatar
         hasBorder={false}
         src="https://i.pinimg.com/736x/bc/bd/8c/bcbd8c3b68d48ee9774adb71e78b270d.jpg"
+        alt=""
       />
 
       <div className={styles.commentBox}>
